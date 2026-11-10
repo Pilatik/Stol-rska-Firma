@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Zostavte si kuchyňu podľa svojich predstáv a získajte orientačný cenový rozsah.">
+  <title>Konfigurátor | Stolárstvo na mieru</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Stolárstvo, domov"><span class="brand-mark" aria-hidden="true">S</span><span>STOLÁRSTVO<span class="brand-sub">NÁBYTOK NA MIERU</span></span></a>
+    <nav class="desktop-nav" aria-label="Hlavná navigácia">
+      <a href="index.html">Domov</a><a href="galeria.html">Fotogaléria</a><a href="konfigurator.html" aria-current="page">Konfigurátor</a><a href="recenzie.html">Recenzie</a><a href="kontakt.html">Kontakt</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="quick-menu" aria-label="Otvoriť ponuku"><span class="search-icon" aria-hidden="true"></span><span>Menu</span></button>
+    <nav class="quick-menu" id="quick-menu" aria-label="Ponuka" hidden>
+      <a href="index.html">Domov <span>01</span></a><a href="galeria.html">Fotogaléria <span>02</span></a><a href="konfigurator.html" aria-current="page">Konfigurátor <span>03</span></a><a href="recenzie.html">Recenzie <span>04</span></a><a href="kontakt.html">Kontakt <span>05</span></a>
+    </nav>
+  </header>
+  <main class="page-main" id="top">
+    <section class="page-intro"><p class="eyebrow">Navrhnite si kuchyňu</p><h1 class="page-title">Váš priestor.<br><em>Vaše pravidlá.</em></h1><p>Vyberte základné parametre a získajte orientačný cenový rozsah. Odhad sa mení priebežne pri každej úprave.</p></section>
+    <section class="config-layout" aria-label="Kalkulácia ceny kuchyne">
+      <div class="config-page-photo" role="img" aria-label="Svetlá kuchyňa s pracovnou doskou z prírodného kameňa"></div>
+      <div class="config-panel">
+        <p class="eyebrow">Orientačná kalkulácia</p>
+        <form class="config-form config-form-page" id="config-form">
+          <div class="field"><label for="layout">Tvar kuchyne</label><select id="layout" name="layout"><option value="2200">Rovná</option><option value="3100">Tvar L</option><option value="4000">Tvar U</option><option value="4800">S ostrovčekom</option></select></div>
+          <div class="field"><label for="material">Materiál dvierok a korpusu</label><select id="material" name="material"><option value="0">Laminát</option><option value="400">Lakované MDF (+400 €)</option><option value="700">Dýha (+700 €)</option><option value="1200">Masívne drevo (+1 200 €)</option></select></div>
+          <div class="field"><label for="front">Typ dvierok</label><select id="front" name="front"><option value="0">Hladké</option><option value="250">Bezúchytkové (+250 €)</option><option value="350">Rámové (+350 €)</option></select></div>
+          <div class="field"><label for="worktop">Pracovná doska</label><select id="worktop" name="worktop"><option value="150">Laminátová (+150 €)</option><option value="450">Drevená (+450 €)</option><option value="800">Kompaktná (+800 €)</option><option value="1400">Kameň alebo kompozit (+1 400 €)</option></select></div>
+          <div class="field length-field"><label for="length">Približná dĺžka linky</label><div class="length-input"><input id="length" name="length" type="number" min="2" max="10" step="0.5" value="4"><span>m</span></div></div>
+          <label class="check-field" for="length-unknown"><input id="length-unknown" name="length-unknown" type="checkbox"><span>Neviem, počítať štandardné 4 m</span></label>
+          <div class="price-result" aria-live="polite"><span class="result-label">Orientačná cena</span><output id="price-output" for="layout material front worktop length">Vypočítavam…</output><p>Konečná cena sa presne stanoví až po osobnom zameraní majstrom.</p></div>
+          <button class="button button-dark" type="submit">Odoslať konfiguráciu <span aria-hidden="true">↗</span></button>
+        </form>
+        <a class="text-link booking-link" href="kontakt.html#rezervacia">Rezervovať termín zamerania <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand brand-footer" href="index.html"><span class="brand-mark" aria-hidden="true">S</span><span>STOLÁRSTVO<span class="brand-sub">NÁBYTOK NA MIERU</span></span></a><nav aria-label="Odkazy v pätičke"><a href="galeria.html">Fotogaléria</a><a href="recenzie.html">Recenzie</a><a href="kontakt.html">Kontakt</a></nav><a href="#top">Späť na začiatok ↑</a></footer>
+  <dialog class="email-dialog" id="email-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Zavrieť">×</button></form>
+    <p class="eyebrow">Vaša konfigurácia je pripravená</p><h2>Pošlite nám<br><em>svoju predstavu.</em></h2>
+    <p class="dialog-summary" id="configuration-summary"></p>
+    <form id="email-form" class="email-form"><label for="customer-email">Váš e-mail</label><input id="customer-email" name="email" type="email" placeholder="meno@email.sk" required><button class="button button-dark" type="submit">Odoslať dopyt <span aria-hidden="true">↗</span></button><p class="form-note">Ukážkový formulár pre školský projekt. Údaje sa nikam neodosielajú.</p><p class="form-status" id="email-status" role="status" hidden></p></form>
+  </dialog>
+</body>
+</html>

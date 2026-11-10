@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Kontaktujte stolárstvo alebo si vyberte ukážkový termín zamerania.">
+  <title>Kontakt a zameranie | Stolárstvo na mieru</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Stolárstvo, domov"><span class="brand-mark" aria-hidden="true">S</span><span>STOLÁRSTVO<span class="brand-sub">NÁBYTOK NA MIERU</span></span></a>
+    <nav class="desktop-nav" aria-label="Hlavná navigácia"><a href="index.html">Domov</a><a href="galeria.html">Fotogaléria</a><a href="konfigurator.html">Konfigurátor</a><a href="recenzie.html">Recenzie</a><a href="kontakt.html" aria-current="page">Kontakt</a></nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="quick-menu" aria-label="Otvoriť ponuku"><span class="search-icon" aria-hidden="true"></span><span>Menu</span></button>
+    <nav class="quick-menu" id="quick-menu" aria-label="Ponuka" hidden><a href="index.html">Domov <span>01</span></a><a href="galeria.html">Fotogaléria <span>02</span></a><a href="konfigurator.html">Konfigurátor <span>03</span></a><a href="recenzie.html">Recenzie <span>04</span></a><a href="kontakt.html" aria-current="page">Kontakt <span>05</span></a></nav>
+  </header>
+  <main class="page-main" id="top">
+    <section class="page-intro"><p class="eyebrow">Sme tu pre váš projekt</p><h1 class="page-title">Začnime<br><em>rozhovorom.</em></h1><p>Napíšte nám pár slov o svojej predstave alebo si vyberte orientačný termín zamerania.</p></section>
+    <section class="contact-details" aria-label="Kontaktné údaje">
+      <div class="contact-detail"><p class="eyebrow">Kontaktná osoba</p><h2>[Meno stolára]</h2><p>[Telefón sa doplní]</p><p>[E-mail sa doplní]</p></div>
+      <div class="contact-detail"><p class="eyebrow">Sídlo firmy</p><h2>Stolárska dielňa</h2><p>[Adresa prevádzky]</p><p>[Telefón firmy] · [E-mail firmy]</p></div>
+    </section>
+    <section class="booking-section" id="rezervacia">
+      <div class="booking-copy"><p class="eyebrow">Osobné zameranie</p><h2>Vyberte si<br><em>termín stretnutia.</em></h2><p>Majster príde zamerať priestor a prebrať s vami detaily. Vybraný dátum je v tejto ukážke len ilustračný.</p></div>
+      <form class="booking-form" id="booking-form">
+        <div class="field"><label for="booking-date">Dátum</label><input id="booking-date" name="date" type="date" required></div>
+        <div class="field"><label for="booking-time">Čas</label><select id="booking-time" name="time" required><option value="">Vyberte čas</option><option>08:00</option><option>10:00</option><option>13:00</option><option>15:00</option></select></div>
+        <div class="field"><label for="booking-name">Meno</label><input id="booking-name" name="name" type="text" placeholder="Vaše meno" required></div>
+        <div class="field"><label for="booking-email">E-mail</label><input id="booking-email" name="email" type="email" placeholder="meno@email.sk" required></div>
+        <button class="button button-dark" type="submit">Vybrať termín <span aria-hidden="true">↗</span></button>
+        <p class="form-note">Ukážková rezervácia pre školský projekt. Údaje sa nikam neodosielajú.</p>
+        <p class="form-status" id="booking-status" role="status" hidden></p>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand brand-footer" href="index.html"><span class="brand-mark" aria-hidden="true">S</span><span>STOLÁRSTVO<span class="brand-sub">NÁBYTOK NA MIERU</span></span></a><nav aria-label="Odkazy v pätičke"><a href="galeria.html">Fotogaléria</a><a href="konfigurator.html">Konfigurátor</a><a href="recenzie.html">Recenzie</a></nav><a href="#top">Späť na začiatok ↑</a></footer>
+</body>
+</html>
