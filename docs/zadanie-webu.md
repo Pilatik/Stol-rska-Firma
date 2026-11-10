@@ -46,7 +46,7 @@ V druhom rámčeku bude sídlo firmy, tel číslo na firmu, a email.
 
 
 
-Podstránka fotogaléria- (fotka v docs/imgs nie je)
+Podstránka fotogaléria
 Veľa fotiek projektov, a stručné popisy.
 
 
