@@ -220,8 +220,10 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.5vw, 60px); line-height: 1.12; }
 .button-dark:hover { background: #292929; }
 .hero h1 { font-size: 68px; }
 .section-heading h2, .home-config h2 { font-size: 48px; }
-.site-footer nav { display: flex; gap: 24px; }
-.site-footer nav a:hover, .site-footer > a:last-child:hover { color: var(--ink); }
+.footer-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; }
+.footer-contact a { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 10px; white-space: nowrap; }
+.footer-contact a:hover, .site-footer > a:last-child:hover { color: var(--ink); }
+.footer-mail-icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
 .section-link { margin-top: 32px; }
 
 .home-config { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; background: var(--paper-deep); }
@@ -360,5 +362,5 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.5vw, 60px); line-height: 1.12; }
   .home-config { grid-template-columns: 1fr; }
   .home-config-copy { padding: 55px 22px; }
   .home-config-image { min-height: 330px; }
-  .site-footer nav { order: 4; width: 100%; flex-wrap: wrap; }
+  .site-footer .footer-contact { order: 3; width: 100%; gap: 12px 20px; }
 }
