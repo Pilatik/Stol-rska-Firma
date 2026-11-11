@@ -1,26 +1,13 @@
-# Moje portfólio — začiatok 👋
+# Pilátik & Co. – kuchyne na mieru
 
-Vitaj! Toto je tvoj štartový projekt pre predmet **Návrh a tvorba webových stránok**. Máš tu pripravené všetko, čo potrebuješ — nič neinštaluješ.
+Školský projekt prezentačného webu pre stolárstvo Pilátik & Co. Stránka predstavuje návrh a výrobu kuchýň na mieru a ponúka orientačný cenový konfigurátor.
 
-## Ako začať
+## Podstránky
 
-1. **Spusti si prostredie.** Ak čítaš toto priamo na GitHube, klikni zelené tlačidlo **`< > Code`** → záložka **Codespaces** → **Create codespace on main**. Po chvíli sa otvorí VS Code v prehliadači.
-2. **Otvor AI asistenta.** Vpravo klikni na ikonu **Copilot Chat** — sem budeš písať, čo chceš vytvoriť.
-3. **Pozri si svoj web.** Klikni pravým tlačidlom na súbor `index.html` → **Show Preview** (alebo *Open with Live Preview*). Otvorí sa živý náhľad, ktorý sa sám obnovuje.
-4. **Postupuj podľa predmetu** — začni **Blokom 6**.
+- **Domov** (`index.html`) – predstavenie značky a odkazy na hlavné časti webu.
+- **Fotogaléria** (`galeria.html`) – ukážky kuchýň s dočasnými ilustračnými fotografiami.
+- **Konfigurátor** (`konfigurator.html`) – priebežný cenový odhad podľa tvaru, materiálov a približnej dĺžky kuchyne.
+- **Recenzie** (`recenzie.html`) – ukážkové hodnotenia.
+- **Kontakt** (`kontakt.html`) – kontaktné údaje a ukážkový formulár na výber termínu zamerania.
 
-## Čo tu nájdeš
-
-| Súbor / priečinok | Na čo je |
-| ----------------- | -------- |
-| `index.html` | Tvoja hlavná stránka — jej **obsah** (zatiaľ len úvodná — čoskoro ju nahradíš svojím portfóliom). |
-| `styles.css` | **Vzhľad** stránky — farby, písmo, rozloženie (vrstva CSS). |
-| `docs/` | Sem sa uloží tvoj **style guide** (dizajnová referencia z Bloku 6) a neskôr tvoj **design brief** (`zadanie-webu.md`, Blok 11). |
-| `img/` | Sem si budeš dávať **obrázky a fotky** (napr. do portfólia v Bloku 7). |
-| `.gitignore` | Hovorí gitu, čo sa **nikdy** nesmie zverejniť — napríklad súbor `.env` s tajnými kľúčmi. |
-
-> **Poznámka:** Nemusíš rozumieť každému súboru. Dôležité je vedieť, že **`index.html` je tvoja stránka** a **do `img/` patria obrázky**. Zvyšok za teba spraví AI.
-
-## Dôležité o bezpečnosti
-
-Tento projekt bude časom **verejný** (aby si web mohol dať online). Preto sem **nikdy nedávaj skutočné heslá ani platobné kľúče**. V kurze používame len bezcenné cvičné kľúče — viac v znalostnej báze *Bezpečnosť kľúčov*.
+Vzhľad stránok zabezpečuje `styles.css` a správanie navigácie, konfigurátora a ukážkových formulárov `app.js`. Web je vytvorený v HTML, CSS a JavaScripte bez backendu; formuláre zatiaľ údaje nikam neodosielajú.
