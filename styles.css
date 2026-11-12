@@ -60,7 +60,7 @@ h1 em, h2 em { color: inherit; font-family: inherit; font-style: normal; font-we
 .text-link { display: inline-flex; gap: 12px; align-items: center; font-size: 11px; font-weight: 700; transition: color .2s; }
 .hero-note { display: flex; align-items: center; gap: 11px; margin-top: 54px; color: var(--muted); font-size: 10px; }
 .note-line { width: 35px; height: 1px; background: var(--clay); }
-.hero-image { grid-column: 1; grid-row: 1; position: relative; min-height: 580px; margin: 38px 2vw 38px 0; background: #bdc0b5 url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85") center 55% / cover; animation: image-in .9s both; }
+.hero-image { grid-column: 1; grid-row: 1; position: relative; min-height: 580px; margin: 38px 2vw 38px 0; background: #bdc0b5 url("img/úvodná stránka/hero sekcia.jpg") center 55% / cover; animation: image-in .9s both; }
 .hero-image::after { content: ""; inset: 0; position: absolute; background: linear-gradient(0deg, #16231d67, transparent 38%); }
 .image-caption { position: absolute; z-index: 1; bottom: 20px; left: 23px; right: 23px; color: white; display: flex; justify-content: space-between; font-size: 9px; }
 .hero-stamp { display: none; }
@@ -82,7 +82,7 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.5vw, 60px); line-height: 1.12; }
 .project-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 38px; align-items: start; }
 .project-small { margin-top: 92px; }
 .project-photo { width: 100%; background-color: var(--paper-deep); background-position: center; background-size: cover; }
-.photo-one { aspect-ratio: 1.18; background-image: url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"); }
+.photo-one { aspect-ratio: 1.18; background-image: url("img/úvodná stránka/Svetlé drevo.jpg"); }
 .photo-two { aspect-ratio: .94; background-image: url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"); }
 .project-meta { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 0; }
 .project-type { color: var(--clay); font-size: 8px; font-weight: 700; }
@@ -231,7 +231,7 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.5vw, 60px); line-height: 1.12; }
 .home-config-copy .eyebrow { margin-bottom: 16px; }
 .home-config-copy h2 { margin: 0 0 18px; line-height: 1.1; }
 .home-config-copy > p:not(.eyebrow) { max-width: 390px; margin-bottom: 25px; color: var(--muted); font-size: 13px; }
-.home-config-image { min-height: 430px; background: #c8c8c3 url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85") center / cover; }
+.home-config-image { min-height: 430px; background: #c8c8c3 url("img/úvodná stránka/koľko môže stáť vaša predstava.jpg") center / cover; }
 
 .page-main { min-height: calc(100vh - 180px); }
 .page-intro { max-width: 1180px; margin: 0 auto; padding: 92px 40px 58px; }
