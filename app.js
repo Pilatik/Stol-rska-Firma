@@ -93,6 +93,19 @@ if (bookingDate) {
   const today = new Date();
   today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   bookingDate.min = today.toISOString().slice(0, 10);
+
+  bookingDate.addEventListener('change', () => {
+    if (!bookingDate.value) {
+      bookingDate.setCustomValidity('');
+      return;
+    }
+
+    const [year, month, day] = bookingDate.value.split('-').map(Number);
+    const weekday = new Date(year, month - 1, day).getDay();
+    const isWeekend = weekday === 0 || weekday === 6;
+    bookingDate.setCustomValidity(isWeekend ? 'Vyberte pracovný deň (pondelok až piatok).' : '');
+    if (isWeekend) bookingDate.reportValidity();
+  });
 }
 
 const bookingForm = document.querySelector('#booking-form');
