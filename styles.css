@@ -87,8 +87,6 @@ h2 { margin-bottom: 0; font-size: clamp(38px, 4.5vw, 60px); line-height: 1.12; }
 .project-meta { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 0; }
 .project-type { color: var(--clay); font-size: 8px; font-weight: 700; }
 .project h3 { margin: 5px 0 0; font: 600 16px var(--display); }
-.project-arrow { width: 34px; height: 34px; border: 1px solid var(--line); display: grid; place-items: center; transition: background .2s; }
-.project:hover .project-arrow { background: var(--paper-deep); }
 .project-disclaimer { margin: 9px 0 0; color: var(--muted); font-size: 10px; line-height: 1.65; }
 .gallery-note { display: flex; gap: 9px; align-items: center; margin-top: 32px; color: var(--muted); font-size: 10px; }
 .gallery-dot { width: 6px; height: 6px; background: var(--clay); border-radius: 50%; }
