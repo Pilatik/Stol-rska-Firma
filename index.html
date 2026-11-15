@@ -22,9 +22,10 @@
       <a href="recenzie.html">Recenzie</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="quick-menu" aria-label="Otvoriť ponuku">
-      <span class="search-icon" aria-hidden="true"></span><span>Menu</span>
-    </button>
+    <div class="header-actions">
+      <button class="search-toggle" type="button" aria-expanded="false" aria-controls="search-panel" aria-label="Otvoriť vyhľadávanie"><span class="search-icon" aria-hidden="true"></span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="quick-menu">Menu</button>
+    </div>
     <nav class="quick-menu" id="quick-menu" aria-label="Ponuka" hidden>
       <a href="index.html" aria-current="page">Domov <span>01</span></a>
       <a href="galeria.html">Fotogaléria <span>02</span></a>
@@ -32,6 +33,20 @@
       <a href="recenzie.html">Recenzie <span>04</span></a>
       <a href="kontakt.html">Kontakt <span>05</span></a>
     </nav>
+    <section class="search-panel" id="search-panel" aria-label="Vyhľadávanie" hidden>
+      <form class="search-form" role="search">
+        <label class="visually-hidden" for="site-search">Čo hľadáte?</label>
+        <input id="site-search" type="search" placeholder="Čo hľadáte?" autocomplete="off">
+        <button class="search-close" type="button" aria-label="Zatvoriť vyhľadávanie">×</button>
+      </form>
+      <p class="search-heading">NAJVYHĽADÁVANEJŠIE</p>
+      <nav class="search-suggestions" aria-label="Najvyhľadávanejšie">
+        <a href="galeria.html">Kuchyňa s ostrovčekom</a>
+        <a href="konfigurator.html">Masívne drevo a dýha</a>
+        <a href="konfigurator.html">Orientačná kalkulácia ceny</a>
+        <a href="kontakt.html">Zameranie a osobná konzultácia</a>
+      </nav>
+    </section>
   </header>
 
   <main>

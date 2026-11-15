@@ -1,11 +1,19 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const quickMenu = document.querySelector('.quick-menu');
+const searchToggle = document.querySelector('.search-toggle');
+const searchPanel = document.querySelector('.search-panel');
+const searchInput = document.querySelector('#site-search');
+const searchClose = document.querySelector('.search-close');
 
 if (menuToggle && quickMenu) {
   menuToggle.addEventListener('click', () => {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
     menuToggle.setAttribute('aria-expanded', String(!isOpen));
     quickMenu.hidden = isOpen;
+    if (!isOpen && searchPanel) {
+      searchPanel.hidden = true;
+      searchToggle?.setAttribute('aria-expanded', 'false');
+    }
   });
 
   quickMenu.addEventListener('click', (event) => {
@@ -14,21 +22,72 @@ if (menuToggle && quickMenu) {
       menuToggle.setAttribute('aria-expanded', 'false');
     }
   });
+}
 
-  document.addEventListener('click', (event) => {
-    if (!quickMenu.hidden && !quickMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-      quickMenu.hidden = true;
-      menuToggle.setAttribute('aria-expanded', 'false');
+if (searchToggle && searchPanel && searchInput) {
+  searchToggle.addEventListener('click', () => {
+    const isOpen = searchToggle.getAttribute('aria-expanded') === 'true';
+    searchToggle.setAttribute('aria-expanded', String(!isOpen));
+    searchPanel.hidden = isOpen;
+    if (!isOpen) {
+      quickMenu && (quickMenu.hidden = true);
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      searchInput.focus();
     }
   });
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      quickMenu.hidden = true;
-      menuToggle.setAttribute('aria-expanded', 'false');
+  searchClose?.addEventListener('click', () => {
+    searchPanel.hidden = true;
+    searchToggle.setAttribute('aria-expanded', 'false');
+    searchToggle.focus();
+  });
+
+  searchPanel.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = searchInput.value
+      .trim()
+      .toLocaleLowerCase('sk')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+    if (!query) return;
+
+    let destination = 'konfigurator.html';
+    if (/(cena|kalkulacka|doska|material|dyha|masiv)/.test(query)) {
+      destination = 'konfigurator.html';
+    } else if (/(fotky|kuchyn|realizaci|ostrovcek)/.test(query)) {
+      destination = 'galeria.html';
+    } else if (/(adresa|telefon|cislo|zameran|konzultaci)/.test(query)) {
+      destination = 'kontakt.html';
+    } else if (/(skusenost|hodnoten|recenzi)/.test(query)) {
+      destination = 'recenzie.html';
     }
+    window.location.href = destination;
   });
 }
+
+document.addEventListener('click', (event) => {
+  if (quickMenu && !quickMenu.hidden && !quickMenu.contains(event.target) && !menuToggle?.contains(event.target)) {
+    quickMenu.hidden = true;
+    menuToggle?.setAttribute('aria-expanded', 'false');
+  }
+  if (searchPanel && !searchPanel.hidden && !searchPanel.contains(event.target) && !searchToggle?.contains(event.target)) {
+    searchPanel.hidden = true;
+    searchToggle?.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    const searchWasOpen = searchPanel && !searchPanel.hidden;
+    const menuWasOpen = quickMenu && !quickMenu.hidden;
+    if (quickMenu) quickMenu.hidden = true;
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    if (searchPanel) searchPanel.hidden = true;
+    searchToggle?.setAttribute('aria-expanded', 'false');
+    if (searchWasOpen) searchToggle?.focus();
+    else if (menuWasOpen) menuToggle?.focus();
+  }
+});
 
 const configForm = document.querySelector('#config-form');
 const priceOutput = document.querySelector('#price-output');
