@@ -89,6 +89,62 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+const galleryGrid = document.querySelector('.gallery-grid');
+const galleryLightbox = document.querySelector('#gallery-lightbox');
+
+if (galleryGrid && galleryLightbox) {
+  const photoButtons = [...galleryGrid.querySelectorAll('.gallery-photo-button')];
+  const lightboxImage = galleryLightbox.querySelector('.lightbox-image');
+  const lightboxTitle = galleryLightbox.querySelector('#lightbox-title');
+  const lightboxDescription = galleryLightbox.querySelector('.lightbox-description');
+  const closeButton = galleryLightbox.querySelector('.lightbox-close');
+  const previousButton = galleryLightbox.querySelector('.lightbox-previous');
+  const nextButton = galleryLightbox.querySelector('.lightbox-next');
+  let activeIndex = 0;
+  let activeTrigger;
+
+  function showPhoto(index) {
+    activeIndex = (index + photoButtons.length) % photoButtons.length;
+    const trigger = photoButtons[activeIndex];
+    const image = trigger.querySelector('img');
+    const item = trigger.closest('.gallery-item');
+    if (!image || !item || !lightboxImage || !lightboxTitle || !lightboxDescription) return;
+
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    lightboxTitle.textContent = item.querySelector('h2')?.textContent.trim() ?? image.alt;
+    lightboxDescription.textContent = item.querySelector('p')?.textContent.trim() ?? '';
+  }
+
+  photoButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      activeTrigger = button;
+      showPhoto(index);
+      galleryLightbox.showModal();
+    });
+  });
+
+  closeButton?.addEventListener('click', () => galleryLightbox.close());
+  previousButton?.addEventListener('click', () => showPhoto(activeIndex - 1));
+  nextButton?.addEventListener('click', () => showPhoto(activeIndex + 1));
+
+  galleryLightbox.addEventListener('click', (event) => {
+    if (event.target === galleryLightbox) galleryLightbox.close();
+  });
+
+  galleryLightbox.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      showPhoto(activeIndex - 1);
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      showPhoto(activeIndex + 1);
+    }
+  });
+
+  galleryLightbox.addEventListener('close', () => activeTrigger?.focus());
+}
+
 const configForm = document.querySelector('#config-form');
 const priceOutput = document.querySelector('#price-output');
 const lengthInput = document.querySelector('#length');
