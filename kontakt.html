@@ -16,12 +16,12 @@
     <nav class="desktop-nav" aria-label="Hlavná navigácia"><a href="index.html">Domov</a><a href="galeria.html">Fotogaléria</a><a href="konfigurator.html">Konfigurátor</a><a href="recenzie.html">Recenzie</a><a href="kontakt.html" aria-current="page">Kontakt</a></nav>
     <div class="header-actions"><button class="search-toggle" type="button" aria-expanded="false" aria-controls="search-panel" aria-label="Otvoriť vyhľadávanie"><span class="search-icon" aria-hidden="true"></span></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="quick-menu">Menu</button></div>
     <nav class="quick-menu" id="quick-menu" aria-label="Ponuka" hidden><a href="index.html">Domov <span>01</span></a><a href="galeria.html">Fotogaléria <span>02</span></a><a href="konfigurator.html">Konfigurátor <span>03</span></a><a href="recenzie.html">Recenzie <span>04</span></a><a href="kontakt.html" aria-current="page">Kontakt <span>05</span></a></nav>
-    <section class="search-panel" id="search-panel" aria-label="Vyhľadávanie" hidden><form class="search-form" role="search"><label class="visually-hidden" for="site-search">Čo hľadáte?</label><input id="site-search" type="search" placeholder="Čo hľadáte?" autocomplete="off"><button class="search-close" type="button" aria-label="Zatvoriť vyhľadávanie">×</button></form><p class="search-heading">NAJVYHĽADÁVANEJŠIE</p><nav class="search-suggestions" aria-label="Najvyhľadávanejšie"><a href="galeria.html">Kuchyňa s ostrovčekom</a><a href="konfigurator.html">Masívne drevo a dýha</a><a href="konfigurator.html">Orientačná kalkulácia ceny</a><a href="kontakt.html">Zameranie a osobná konzultácia</a></nav></section>
+    <section class="search-panel" id="search-panel" aria-label="Vyhľadávanie" hidden><form class="search-form" role="search"><label class="visually-hidden" for="site-search">Čo hľadáte?</label><input id="site-search" type="search" placeholder="Čo hľadáte?" autocomplete="off"><button class="search-close" type="button" aria-label="Zatvoriť vyhľadávanie">×</button></form><p class="search-heading">NAJVYHĽADÁVANEJŠIE</p><nav class="search-suggestions" aria-label="Najvyhľadávanejšie"><a href="galeria.html#ostrovcek">Kuchyňa s ostrovčekom</a><a href="konfigurator.html#materialy">Masívne drevo a dýha</a><a href="konfigurator.html#kalkulacka">Orientačná kalkulácia ceny</a><a href="kontakt.html#dielna">Zameranie a osobná konzultácia</a><a href="kontakt.html#faq">Ako dlho trvá výroba (FAQ)</a></nav></section>
   </header>
   <main class="page-main" id="top">
     <section class="page-intro"><p class="eyebrow">Sme tu pre váš projekt</p><h1 class="page-title">Začnime<br><em>rozhovorom.</em></h1><p>Napíšte nám pár slov o svojej predstave alebo si vyberte orientačný termín zamerania.</p></section>
     <section class="contact-details" aria-label="Kontaktné údaje">
-      <div class="contact-detail">
+      <div class="contact-detail" id="dizajner">
         <p class="eyebrow">Kontakt</p>
         <h2>Kontaktná osoba &amp; Dizajn</h2>
         <p class="contact-person"><strong>Peter Pilátik</strong><span>Zakladateľ &amp; Hlavný dizajnér</span></p>
@@ -32,7 +32,7 @@
           <div><dt>Otváracie hodiny</dt><dd>Po – Pi: 08:00 – 16:00</dd></div>
         </dl>
       </div>
-      <div class="contact-detail">
+      <div class="contact-detail" id="dielna">
         <p class="eyebrow">Sídlo &amp; dielňa</p>
         <h2>Showroom &amp; Stolárska dielňa</h2>
         <address class="contact-address"><strong>PILÁTIK &amp; CO.</strong><br>Priemyselná 12<br>010 01 Žilina</address>
@@ -47,7 +47,7 @@
     <section class="booking-section" id="rezervacia">
       <div class="booking-copy"><p class="eyebrow">Osobné zameranie</p><h2>Vyberte si<br><em>termín stretnutia.</em></h2><p>Majster príde zamerať priestor a prebrať s vami detaily. Vybraný dátum je v tejto ukážke len ilustračný.</p></div>
       <form class="booking-form" id="booking-form">
-        <div class="field"><label for="booking-date">Dátum</label><input id="booking-date" name="date" type="date" required></div>
+        <div class="field" id="kalendar"><label for="booking-date">Dátum</label><input id="booking-date" name="date" type="date" required></div>
         <div class="field"><label for="booking-time">Čas</label><select id="booking-time" name="time" required><option value="">Vyberte čas</option><option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option><option>13:00</option><option>14:00</option></select></div>
         <div class="field"><label for="booking-name">Meno</label><input id="booking-name" name="name" type="text" placeholder="Vaše meno" required></div>
         <div class="field"><label for="booking-email">E-mail</label><input id="booking-email" name="email" type="email" placeholder="meno@email.sk" required></div>
@@ -56,7 +56,7 @@
         <p class="form-status" id="booking-status" role="status" hidden></p>
       </form>
     </section>
-    <section class="faq-section" aria-labelledby="faq-title">
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
       <h2 id="faq-title">Často kladené otázky</h2>
       <div class="faq-list">
         <details class="faq-item">

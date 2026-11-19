@@ -5,6 +5,30 @@ const searchPanel = document.querySelector('.search-panel');
 const searchInput = document.querySelector('#site-search');
 const searchClose = document.querySelector('.search-close');
 
+function closeSearchPanel(restoreFocus = false) {
+  if (!searchPanel) return;
+
+  searchPanel.hidden = true;
+  searchToggle?.setAttribute('aria-expanded', 'false');
+  if (restoreFocus) searchToggle?.focus();
+}
+
+function navigateToSearchDestination(destination) {
+  closeSearchPanel();
+  const url = new URL(destination, window.location.href);
+
+  if (url.origin === window.location.origin && url.pathname === window.location.pathname) {
+    const target = document.getElementById(url.hash.slice(1));
+    if (target) {
+      if (window.location.hash !== url.hash) window.location.hash = url.hash;
+      else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+  }
+
+  window.location.href = url.href;
+}
+
 if (menuToggle && quickMenu) {
   menuToggle.addEventListener('click', () => {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
@@ -37,9 +61,17 @@ if (searchToggle && searchPanel && searchInput) {
   });
 
   searchClose?.addEventListener('click', () => {
-    searchPanel.hidden = true;
-    searchToggle.setAttribute('aria-expanded', 'false');
-    searchToggle.focus();
+    closeSearchPanel(true);
+  });
+
+  searchPanel.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link || !searchPanel.contains(link)) return;
+    closeSearchPanel();
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    navigateToSearchDestination(link.href);
   });
 
   searchPanel.addEventListener('submit', (event) => {
@@ -51,17 +83,18 @@ if (searchToggle && searchPanel && searchInput) {
       .replace(/[\u0300-\u036f]/g, '');
     if (!query) return;
 
-    let destination = 'konfigurator.html';
-    if (/(cena|kalkulacka|doska|material|dyha|masiv)/.test(query)) {
-      destination = 'konfigurator.html';
-    } else if (/(fotky|kuchyn|realizaci|ostrovcek)/.test(query)) {
-      destination = 'galeria.html';
-    } else if (/(adresa|telefon|cislo|zameran|konzultaci)/.test(query)) {
-      destination = 'kontakt.html';
-    } else if (/(skusenost|hodnoten|recenzi)/.test(query)) {
-      destination = 'recenzie.html';
-    }
-    window.location.href = destination;
+    const destinations = [
+      { terms: ['faq', 'otazk', 'trva', 'vyrob', 'spotrebic', 'region'], url: 'kontakt.html#faq' },
+      { terms: ['adresa', 'dieln', 'zilin', 'zameran', 'majster'], url: 'kontakt.html#dielna' },
+      { terms: ['kontakt', 'telefon', 'cislo', 'email', 'pilatik'], url: 'kontakt.html#dizajner' },
+      { terms: ['material', 'drev', 'dub', 'dyh', 'dosk'], url: 'konfigurator.html#materialy' },
+      { terms: ['cena', 'kalkulack', 'vypocet', 'konfigurator', 'rozmer'], url: 'konfigurator.html#kalkulacka' },
+      { terms: ['ostrovcek', 'galeri', 'fotk', 'kuchyn', 'realizaci'], url: 'galeria.html#realizacie' },
+      { terms: ['spoluprac', 'postup', 'ako to funguje', 'montaz'], url: 'index.html#spolupraca' },
+      { terms: ['recenzi', 'skusen', 'hodnoten'], url: 'recenzie.html#hodnotenia' },
+    ];
+    const match = destinations.find(({ terms }) => terms.some((term) => query.includes(term)));
+    navigateToSearchDestination(match?.url ?? 'konfigurator.html#kalkulacka');
   });
 }
 
@@ -145,7 +178,7 @@ if (galleryGrid && galleryLightbox) {
   galleryLightbox.addEventListener('close', () => activeTrigger?.focus());
 }
 
-const configForm = document.querySelector('#config-form');
+const configForm = document.querySelector('#kalkulacka');
 const priceOutput = document.querySelector('#price-output');
 const lengthInput = document.querySelector('#length');
 const lengthUnknown = document.querySelector('#length-unknown');
