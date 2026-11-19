@@ -122,6 +122,21 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+const processGrid = document.querySelector('.process-grid');
+if (processGrid) {
+  processGrid.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const summary = event.target.closest('.process-step > summary');
+    const currentStep = summary?.parentElement;
+    if (!(currentStep instanceof HTMLDetailsElement) || currentStep.open) return;
+
+    processGrid.querySelectorAll('details[open]').forEach((step) => {
+      if (step !== currentStep) step.open = false;
+    });
+  });
+}
+
 const galleryGrid = document.querySelector('.gallery-grid');
 const galleryLightbox = document.querySelector('#gallery-lightbox');
 
