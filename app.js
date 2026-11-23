@@ -283,3 +283,55 @@ if (bookingForm) {
     }
   });
 }
+
+const reviewsSection = document.querySelector('.reviews-scroll-section');
+const reviewsStickyContainer = document.querySelector('.reviews-sticky-container');
+const reviewsTrack = document.querySelector('.reviews-track');
+const reviewsProgress = document.querySelector('.reviews-progress');
+
+if (reviewsSection && reviewsStickyContainer && reviewsTrack && reviewsProgress) {
+  const reviewsDesktopQuery = window.matchMedia('(min-width: 769px)');
+  const reviewsProgressFill = reviewsProgress.querySelector('span');
+  let reviewsFrame = 0;
+
+  function setReviewsProgress(progress) {
+    const boundedProgress = Math.min(1, Math.max(0, progress));
+    if (reviewsProgressFill) reviewsProgressFill.style.width = `${boundedProgress * 100}%`;
+    reviewsProgress.setAttribute('aria-valuenow', String(Math.round(boundedProgress * 100)));
+  }
+
+  function updateReviewsScroll() {
+    reviewsFrame = 0;
+
+    if (!reviewsDesktopQuery.matches) {
+      reviewsTrack.style.transform = '';
+      const maxScroll = reviewsTrack.scrollWidth - reviewsTrack.clientWidth;
+      setReviewsProgress(maxScroll > 0 ? reviewsTrack.scrollLeft / maxScroll : 0);
+      return;
+    }
+
+    const sectionTop = reviewsSection.getBoundingClientRect().top + window.scrollY;
+    const scrollRange = Math.max(0, reviewsSection.offsetHeight - reviewsStickyContainer.offsetHeight);
+    const progress = scrollRange > 0
+      ? (window.scrollY - sectionTop) / scrollRange
+      : 0;
+    const stickyStyles = window.getComputedStyle(reviewsStickyContainer);
+    const horizontalPadding = Number.parseFloat(stickyStyles.paddingLeft)
+      + Number.parseFloat(stickyStyles.paddingRight);
+    const visibleWidth = reviewsStickyContainer.clientWidth - horizontalPadding;
+    const maxOffset = Math.max(0, reviewsTrack.scrollWidth - visibleWidth);
+
+    reviewsTrack.style.transform = `translateX(${-maxOffset * Math.min(1, Math.max(0, progress))}px)`;
+    setReviewsProgress(progress);
+  }
+
+  function scheduleReviewsScrollUpdate() {
+    if (reviewsFrame) return;
+    reviewsFrame = window.requestAnimationFrame(updateReviewsScroll);
+  }
+
+  window.addEventListener('scroll', scheduleReviewsScrollUpdate, { passive: true });
+  window.addEventListener('resize', scheduleReviewsScrollUpdate);
+  reviewsTrack.addEventListener('scroll', scheduleReviewsScrollUpdate, { passive: true });
+  scheduleReviewsScrollUpdate();
+}
