@@ -84,6 +84,7 @@ if (searchToggle && searchPanel && searchInput) {
     if (!query) return;
 
     const destinations = [
+      { terms: ['b2b', 'architekt', 'dizajner', 'navrh', 'vykresy'], url: 'kontakt.html#b2b' },
       { terms: ['faq', 'otazk', 'trva', 'vyrob', 'spotrebic', 'region'], url: 'kontakt.html#faq' },
       { terms: ['adresa', 'dieln', 'zilin', 'zameran', 'majster'], url: 'kontakt.html#dielna' },
       { terms: ['kontakt', 'telefon', 'cislo', 'email', 'pilatik'], url: 'kontakt.html#dizajner' },
